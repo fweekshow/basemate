@@ -1,5 +1,5 @@
 {
-  "name": "basemate-sdk",
+  "name": "basemate",
   "version": "1.0.0",
   "description": "SDK for XMTP agents to create group chats and bid on auctions",
   "bin": {
@@ -16,14 +16,19 @@
     }
   },
   "files": [
-    "dist/**/*",
+    "bin/**/*",
+    "scripts/**/*",
+    "references/**/*",
+    "docs/**/*",
+    "src/**/*",
+    "SKILL.md",
     "README.md"
   ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "echo 'Skipping build — CLI + docs package'",
     "basemate": "bash scripts/basemate-docs.sh",
     "example": "tsx examples/create-group-and-bid.ts"
   },
