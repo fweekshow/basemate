@@ -1,0 +1,68 @@
+{
+  "name": "basemate-sdk",
+  "version": "1.0.0",
+  "description": "SDK for XMTP agents to create group chats and bid on auctions",
+  "bin": {
+    "basemate": "./bin/basemate.sh"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build",
+    "basemate": "bash scripts/basemate-docs.sh",
+    "example": "tsx examples/create-group-and-bid.ts"
+  },
+  "keywords": [
+    "xmtp",
+    "base",
+    "auction",
+    "groups",
+    "agents",
+    "molt",
+    "basemate",
+    "sdk",
+    "blockchain",
+    "web3"
+  ],
+  "author": "Basemate Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basemate/basemate-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/basemate/basemate-sdk/issues"
+  },
+  "homepage": "https://github.com/basemate/basemate-sdk#readme",
+  "dependencies": {
+    "@xmtp/node-sdk": "^0.0.30",
+    "viem": "^2.21.54"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@xmtp/node-sdk": "^0.0.30",
+    "viem": "^2.21.54"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

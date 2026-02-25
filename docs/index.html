@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basemate — Agent Skill for XMTP Group Discovery</title>
+<style>
+  :root { --bg: #0a0a0a; --card: #141414; --border: #222; --text: #e0e0e0; --muted: #888; --accent: #3b82f6; --accent2: #8b5cf6; --green: #22c55e; --orange: #f59e0b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+  h1 span { color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
+  h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; color: var(--accent); }
+  p, li { margin-bottom: 0.5rem; }
+  ul { padding-left: 1.5rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { background: #1e1e1e; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre { background: #1a1a2e; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; overflow-x: auto; margin: 1rem 0; }
+  pre code { background: none; padding: 0; font-size: 0.85em; }
+  .hero { text-align: center; padding: 3rem 0 2rem; }
+  .hero img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 1rem; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin: 0 4px 8px; }
+  .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent); }
+  .badge-purple { background: rgba(139,92,246,0.15); color: var(--accent2); }
+  .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge-orange { background: rgba(245,158,11,0.15); color: var(--orange); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .card h4 { margin-bottom: 0.5rem; font-size: 1rem; }
+  .card p { color: var(--muted); font-size: 0.9rem; margin: 0; }
+  .endpoint { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin: 0.5rem 0; font-family: monospace; font-size: 0.85rem; }
+  .method { font-weight: 700; min-width: 50px; }
+  .method-get { color: var(--green); }
+  .method-put { color: var(--orange); }
+  .method-post { color: var(--accent); }
+  .path { color: var(--text); }
+  .desc { color: var(--muted); margin-left: auto; font-family: -apple-system, sans-serif; font-size: 0.8rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--muted); font-weight: 600; }
+  .section { margin-bottom: 3rem; }
+  .address { font-family: monospace; font-size: 0.85rem; color: var(--muted); word-break: break-all; }
+  .note { background: rgba(59,130,246,0.08); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.9rem; }
+  .flow { counter-reset: step; }
+  .flow li { counter-increment: step; list-style: none; position: relative; padding-left: 2.5rem; margin-bottom: 1rem; }
+  .flow li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 1.75rem; height: 1.75rem; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 3rem 0 2rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+  @media (max-width: 600px) { .container { padding: 1rem; } h1 { font-size: 1.6rem; } .desc { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <img src="https://res.cloudinary.com/dg5qvbxjp/image/upload/v1770196704/IMG_9007_iv7vkm.png" alt="Basemate">
+  <h1>🔗 <span>Basemate</span> Skill</h1>
+  <p class="subtitle">The discovery layer for XMTP group chats on Base app — now available to any OpenClaw agent.</p>
+  <div>
+    <span class="badge badge-blue">XMTP</span>
+    <span class="badge badge-purple">Base Mainnet</span>
+    <span class="badge badge-green">OpenClaw Skill</span>
+    <span class="badge badge-orange">Onchain Auctions</span>
+  </div>
+</div>
+
+<!-- WHAT AGENTS CAN DO -->
+<div class="section">
+<h2>What Agents Can Do</h2>
+<div class="cards">
+  <div class="card">
+    <h4>🔍 Discover Groups</h4>
+    <p>Browse the ranked discovery feed, filter by tags, find trending communities, and recommend groups to users.</p>
+  </div>
+  <div class="card">
+    <h4>🏗️ Create Groups</h4>
+    <p>Create XMTP group chats, add Basemate for indexing, set images, descriptions, and interest tags.</p>
+  </div>
+  <div class="card">
+    <h4>📈 Boost Groups</h4>
+    <p>Pay $4.99/week in USDC for algorithmic ranking boost. +50 score, top of discovery for 7 days.</p>
+  </div>
+  <div class="card">
+    <h4>🏆 Bid on Auctions</h4>
+    <p>Place onchain USDC bids for the #1 trending slot. Fully onchain smart contract on Base.</p>
+  </div>
+  <div class="card">
+    <h4>💬 Rich Messaging</h4>
+    <p>Send text, markdown, attachments, USDC transactions, deeplinks, miniapps, and interactive buttons in groups.</p>
+  </div>
+  <div class="card">
+    <h4>⚙️ Group Management</h4>
+    <p>Update metadata, add/remove members, manage permissions and roles. Full group lifecycle.</p>
+  </div>
+</div>
+</div>
+
+<!-- QUICK START -->
+<div class="section">
+<h2>Quick Start — Agent Flow</h2>
+<ol class="flow">
+  <li><strong>Create a group</strong> with Basemate as a member — set name, description, and image URL</li>
+  <li><strong>Send a message</strong> in the group to trigger Basemate indexing</li>
+  <li><strong>Set tags</strong> — <code>PUT /api/group/:groupId/tags</code> with interest tags for matching</li>
+  <li><strong>Optional: Boost</strong> — transfer $4.99 USDC to treasury, then call <code>POST /api/group/boost/verify-tx</code></li>
+  <li><strong>Optional: Auction</strong> — approve USDC + call <code>placeBidSimple</code> on the auction contract</li>
+</ol>
+<div class="note">
+  <strong>Note:</strong> Agents cannot set invite links. Only group owners set invite links through the Base app UI. When bidding on auctions, agents pass <code>""</code> for the link parameter.
+</div>
+</div>
+
+<!-- CREATE GROUP -->
+<div class="section">
+<h2>Create a Discoverable Group</h2>
+
+<h3>Step 1: Create XMTP Group</h3>
+<pre><code>xmtp conversations create-group 0xb257b5c180b7b2cb80e35d6079abe68d9cf0467f \
+  --name "My Community" \
+  --description "A group about DeFi on Base" \
+  --image-url "https://example.com/avatar.png"</code></pre>
+<p>Add more members by listing additional wallet addresses after Basemate's address.</p>
+
+<h3>Step 2: Send Welcome Message</h3>
+<pre><code>xmtp conversation send-text &lt;conversationId&gt; "Welcome! 🔗"</code></pre>
+
+<h3>Step 3: Wait for Indexing</h3>
+<p>Basemate indexes the group after detecting a message. Once indexed, tag writes will persist and the group appears in the discovery feed.</p>
+
+<h3>Step 4: Set Tags</h3>
+<pre><code>curl -X PUT https://devconnectarg-production.up.railway.app/api/group/&lt;groupId&gt;/tags \
+  -H "Content-Type: application/json" \
+  -d '{"tags": ["defi", "trading", "base"]}'</code></pre>
+
+<p>The group is now live. Share with deeplinks: <code>cbwallet://messaging/&lt;conversationId&gt;</code></p>
+</div>
+
+<!-- API REFERENCE -->
+<div class="section">
+<h2>API Reference</h2>
+<p style="color: var(--muted); margin-bottom: 1rem;">Base URL: <code>https://devconnectarg-production.up.railway.app</code> — All public, no auth.</p>
+
+<h3>Discovery</h3>
+<div class="endpoint"><span class="method method-get">GET</span><span class="path">/api/groups</span><span class="desc">Ranked discovery feed</span></div>
+<div class="endpoint"><span class="method method-get">GET</span><span class="path">/api/groups/eligible</span><span class="desc">All groups with Basemate</span></div>
+
+<h3>Group Details</h3>
+<div class="endpoint"><span class="method method-get">GET</span><span class="path">/api/group/:groupId/tags</span><span class="desc">Interest tags</span></div>
+<div class="endpoint"><span class="method method-get">GET</span><span class="path">/api/group/:groupId/boost</span><span class="desc">Boost status</span></div>
+<div class="endpoint"><span class="method method-get">GET</span><span class="path">/api/group/:groupId/invite-link</span><span class="desc">Invite link (read-only)</span></div>
+
+<h3>Agent Actions</h3>
+<div class="endpoint"><span class="method method-put">PUT</span><span class="path">/api/group/:groupId/tags</span><span class="desc">Update interest tags</span></div>
+<div class="endpoint"><span class="method method-post">POST</span><span class="path">/api/group/boost/verify-tx</span><span class="desc">Activate boost with tx proof</span></div>
+</div>
+
+<!-- BOOST -->
+<div class="section">
+<h2>Boost — Paid Discovery ($4.99/week)</h2>
+<ul>
+  <li><strong>+50 score boost</strong> in the trending algorithm</li>
+  <li><strong>is_suggestable: true</strong> — agents recommend it, skips 5-member requirement</li>
+  <li><strong>Top of discovery feed</strong> for 7 days</li>
+</ul>
+
+<h3>Agent Flow</h3>
+<ol class="flow">
+  <li><strong>Transfer $4.99 USDC</strong> to the treasury address on Base Mainnet</li>
+  <li><strong>Call verify endpoint</strong> — <code>POST /api/group/boost/verify-tx</code> with <code>{ "groupId", "txHash" }</code></li>
+</ol>
+<p>The backend verifies onchain: tx succeeded, USDC transfer to treasury, amount ≥ $4.99, no replay.</p>
+</div>
+
+<!-- AUCTION -->
+<div class="section">
+<h2>Auction — Bid for #1 Trending</h2>
+<p>Fully onchain smart contract on Base Mainnet. Winner's community gets the top trending slot.</p>
+
+<h3>Placing a Bid</h3>
+<ol class="flow">
+  <li><strong>Approve USDC</strong> — <code>USDC.approve(auctionContract, bidAmount)</code></li>
+  <li><strong>Place bid</strong> — <code>placeBidSimple(bidAmount, maxAmount, communityName, description, "")</code></li>
+</ol>
+
+<h3>Reading Auction State</h3>
+<table>
+  <tr><th>Function</th><th>Returns</th></tr>
+  <tr><td><code>currentAuctionId()</code></td><td>Current auction number</td></tr>
+  <tr><td><code>minimumBidPrice()</code></td><td>Floor bid in USDC (6 decimals)</td></tr>
+  <tr><td><code>bidIncrement()</code></td><td>Min increment over highest bid</td></tr>
+  <tr><td><code>getAuctionBids(auctionId)</code></td><td>All bids for a given auction</td></tr>
+  <tr><td><code>needsFinalization()</code></td><td>Whether previous auction needs finalizing</td></tr>
+</table>
+
+<h3>Contract ABI (Minimal)</h3>
+<pre><code>[
+  {
+    "name": "placeBidSimple",
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      {"name": "bidAmount", "type": "uint256"},
+      {"name": "maxAmount", "type": "uint256"},
+      {"name": "communityName", "type": "string"},
+      {"name": "description", "type": "string"},
+      {"name": "link", "type": "string"}
+    ]
+  },
+  { "name": "currentAuctionId", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "uint256"}] },
+  { "name": "minimumBidPrice", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "uint256"}] },
+  { "name": "bidIncrement", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "uint256"}] },
+  { "name": "needsFinalization", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "bool"}] }
+]</code></pre>
+</div>
+
+<!-- KEY ADDRESSES -->
+<div class="section">
+<h2>Key Addresses</h2>
+<table>
+  <tr><th>What</th><th>Address</th></tr>
+  <tr><td>Basemate Wallet</td><td class="address">0xb257b5c180b7b2cb80e35d6079abe68d9cf0467f</td></tr>
+  <tr><td>Basemate Inbox ID</td><td class="address">91e5c2e39bcc8f553de3db2ce1a9d78f9f2b0bbc6c182653c086892b8048d647</td></tr>
+  <tr><td>Treasury (Boosts)</td><td class="address">0xA189D38cf98A153Cfe83F42B82fcd9c3Cc805Fbe</td></tr>
+  <tr><td>Auction Contract</td><td class="address">0xEec2f9560110e7BDBbd7ad7bfBe31d30891D9EFC</td></tr>
+  <tr><td>USDC (Base)</td><td class="address">0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913</td></tr>
+</table>
+</div>
+
+<!-- INSTALL -->
+<div class="section">
+<h2>Install</h2>
+<pre><code># Install via ClawHub (for OpenClaw agents)
+clawhub install basemate</code></pre>
+<p>Once installed, the skill auto-activates when conversations mention group discovery, XMTP groups, Basemate, trending communities, auctions, or boosts.</p>
+</div>
+
+<footer>
+  <p>Built by <strong>Basemate</strong> · Powered by <a href="https://docs.openclaw.ai">OpenClaw</a> · Available on <a href="https://clawhub.com">ClawHub</a></p>
+</footer>
+
+</div>
+</body>
+</html>
