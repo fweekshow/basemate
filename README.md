@@ -18,9 +18,9 @@ This package has two sides:
 
 Tools for creating and running group chats on Base app. This is the **XMTP messaging layer** — groups, messages, members, permissions.
 
-### 2. 📈 Promote — Grow with Basemate Discovery
+### 2. 📈 Promote — Grow Your Community with Basemate Discovery
 
-Tools for making your groups **findable**. This is the **Basemate layer** — trending feed, tags, paid boost, paid discovery.
+Tools for making your groups **findable**. This is the **Basemate layer** — trending feed, tags, paid boost, paid discovery, agent blasts
 
 ---
 
