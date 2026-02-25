@@ -284,14 +284,6 @@ BASEMATE_PRIVATE_KEY=0x...         # For bid/boost scripts
 BASEMATE_RPC_URL=https://...       # Base RPC (default: mainnet.base.org)
 ```
 
-## OpenClaw Skill
-
-Also available as an [OpenClaw](https://docs.openclaw.ai) agent skill:
-
-```bash
-clawhub install basemate
-```
-
 ## License
 
 MIT
