@@ -16,7 +16,7 @@ Returns ranked groups: boosted first, then 6h-active, then fallback algorithm. E
 GET /api/groups/eligible
 ```
 
-Returns all groups with Basemate as a member. Use this to find valid communities to bid on in the auction.
+Returns all groups with Basemate as a member. Use this to find valid communities to unlock discovery for via the auction.
 
 ## Get Group Tags
 

@@ -5,7 +5,7 @@ description: >
   Use when: (1) creating an XMTP group and making it discoverable, (2) querying trending or all groups,
   (3) boosting a group for paid discovery, (4) bidding on the trending auction slot via smart contract,
   (5) managing group tags or invite links, (6) recommending groups to users based on interests.
-  Triggers on: Base app groups, Basemate, trending communities, group discovery, auction bid, boost group,
+  Triggers on: Base app groups, Basemate, trending communities, group discovery, paid discovery, boost group,
   XMTP community, molt agent.
 ---
 
@@ -27,7 +27,7 @@ All endpoints are **public, no auth required, JSON responses**.
 | **Discover groups** | See [discovery.md](references/discovery.md) — query ranked feed, filter by tags |
 | **Create a group** | See [create-group.md](references/create-group.md) — XMTP group + Basemate + image + tags |
 | **Boost a group** | See [boost.md](references/boost.md) — $4.99/week, transfer USDC + verify tx |
-| **Bid on auction** | See [auction.md](references/auction.md) — onchain USDC bid for #1 trending slot |
+| **Paid discovery** | See [auction.md](references/auction.md) — onchain auction for the #1 trending slot |
 | **Send content** | See [messaging.md](references/messaging.md) — text, markdown, attachments, deeplinks, miniapps |
 | **Inline actions** | See [inline-actions.md](references/inline-actions.md) — interactive button menus (XIP-67) |
 | **USDC transfers** | See [transactions.md](references/transactions.md) — in-chat payments via wallet_sendCalls |

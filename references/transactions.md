@@ -97,6 +97,6 @@ agent.on("message", async (ctx) => {
 ## Use Cases for Basemate
 
 - **Boost payments** — collect $4.99 USDC in-chat for group boost
-- **Auction contributions** — pool USDC from group members for auction bids
+- **Auction contributions** — pool USDC from group members for paid discovery
 - **Tipping** — let group members tip each other
 - **Gated access** — require a payment to join premium groups

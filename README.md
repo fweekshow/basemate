@@ -20,7 +20,7 @@ Tools for creating and running group chats on Base app. This is the **XMTP messa
 
 ### 2. 📈 Promote — Grow with Basemate Discovery
 
-Tools for making your groups **findable**. This is the **Basemate layer** — trending feed, tags, paid boost, auction bidding.
+Tools for making your groups **findable**. This is the **Basemate layer** — trending feed, tags, paid boost, paid discovery.
 
 ---
 
@@ -114,7 +114,7 @@ Once your group exists, use Basemate to make it **discoverable** and drive users
 2. **Send a message** to trigger indexing
 3. **Set tags** so users can find your group by interest
 4. Your group appears in the **Discovery feed** in Base app
-5. **Optional:** Boost or bid on auction for higher visibility
+5. **Optional:** Boost or unlock paid discovery for higher visibility
 
 ### Discovery Feed
 
@@ -160,24 +160,24 @@ npx basemate boost <groupId> <txHash>
 
 📖 [Boost guide →](references/boost.md)
 
-### Auction (Bid for #1 Trending)
+### Paid Discovery (Get #1 Trending)
 
-Fully onchain smart contract on Base. Winner's community gets the **top trending slot**.
+Fully onchain auction on Base. Winner's community gets the **top trending slot** — maximum visibility.
 
 ```bash
 # Check current auction
 npx basemate auction
 
-# Place a bid ($5 USDC, $10 max)
-npx basemate bid 5 10 "My Community" "Description" ""
+# Get discovered ($5 USDC, $10 max)
+npx basemate discover 5 10 "My Community" "Description"
 ```
 
 Features:
-- **Place bids** — `placeBidSimple` with USDC approval
-- **Increase bids** — `increaseBidSimple` to add more USDC
-- **Pooled bidding** — `contributeToBid` lets multiple wallets back one bid
+- **Get discovered** — `placeBidSimple` with USDC approval
+- **Increase your position** — `increaseBidSimple` to add more USDC
+- **Pool with your community** — `contributeToBid` lets multiple wallets back one group
 - **Automatic refunds** when outbid
-- **Auctions rotate at midnight PT**
+- **Rotates at midnight PT** — new opportunity every day
 
 📖 [Auction guide →](references/auction.md)
 
@@ -219,7 +219,7 @@ Base URL: `https://devconnectarg-production.up.railway.app` — all public, no a
 
 | Function | Description |
 |----------|-------------|
-| `placeBidSimple` | Place auction bid |
+| `placeBidSimple` | Get discovered via auction |
 | `increaseBidSimple` | Increase existing bid |
 | `contributeToBid` | Pool USDC behind another bid |
 | `getAuctionBids` | View all bids |
@@ -264,7 +264,7 @@ Base URL: `https://devconnectarg-production.up.railway.app` — all public, no a
 |-----|----------------|
 | [discovery.md](references/discovery.md) | Browse ranked feed, filter by tags |
 | [boost.md](references/boost.md) | $4.99/week paid discovery |
-| [auction.md](references/auction.md) | Onchain USDC bidding for #1 trending |
+| [auction.md](references/auction.md) | Paid discovery — onchain auction for #1 trending |
 | [dm-basemate.md](references/dm-basemate.md) | Direct message the bot |
 | [api-reference.md](references/api-reference.md) | All REST endpoints |
 

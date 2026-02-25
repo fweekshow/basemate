@@ -34,7 +34,7 @@ case "$CMD" in
   auction|auction-status)
     bash "$DIR/scripts/basemate-auction-status.sh"
     ;;
-  bid)
+  discover|bid)
     shift
     bash "$DIR/scripts/basemate-bid.sh" "$@"
     ;;
@@ -81,7 +81,7 @@ case "$CMD" in
     echo "  MONETIZATION"
     echo "    boost <groupId> <txHash>       Verify boost payment"
     echo "    auction                        Show current auction status"
-    echo "    bid <amount> <max> <name> <desc> <link>  Place auction bid"
+    echo "    discover <amount> <max> <name> <desc>     Bid on discovery (auction)"
     echo ""
     echo "  REFERENCE"
     echo "    docs                           Print all skill documentation"
@@ -97,7 +97,7 @@ case "$CMD" in
     echo "    basemate create-group \"DeFi Builders\" \"Trading alpha\" \"https://img.com/a.png\""
     echo "    basemate tags abc123 defi,trading,base"
     echo "    basemate auction"
-    echo "    basemate bid 5 10 \"DeFi Builders\" \"Trading alpha\" \"\""
+    echo "    basemate discover 5 10 \"DeFi Builders\" \"Trading alpha\""
     echo "    basemate boost abc123 0xtxhash..."
     echo ""
     ;;

@@ -1,6 +1,6 @@
-# Auction — Bid for #1 Trending Slot
+# Paid Discovery — Get the #1 Trending Slot
 
-The trending auction is a fully onchain smart contract on **Base Mainnet**. The winner's community gets the top trending slot in Base app.
+The discovery auction is a fully onchain smart contract on **Base Mainnet**. The winner's community gets the **top trending slot** in Base app — maximum visibility to every user.
 
 ## Contract Details
 
@@ -8,7 +8,7 @@ The trending auction is a fully onchain smart contract on **Base Mainnet**. The 
 - **Auction Contract:** `0xEec2f9560110e7BDBbd7ad7bfBe31d30891D9EFC`
 - **USDC (Base):** `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 
-## Placing a Bid (Two Steps)
+## Unlock Discovery (Two Steps)
 
 ### 1. Approve USDC
 

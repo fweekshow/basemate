@@ -67,6 +67,6 @@ Returns `{ paidDiscovery, expiresAt, boostScore }`.
 ## Boost vs Auction
 
 - **Boost** = $4.99/week, guaranteed algorithmic ranking boost for 7 days
-- **Auction** = onchain USDC bid for the #1 trending slot. Competitive. See [auction.md](auction.md)
+- **Auction** = onchain auction for the #1 trending slot. Competitive. See [auction.md](auction.md)
 
 Both are optional. A group is discoverable just by having Basemate as a member.
